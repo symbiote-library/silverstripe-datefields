@@ -20,11 +20,11 @@ class DropdownDatetimeField extends DatetimeField {
 
 		$this->setHTML5(false);
 
-		$this->dateField = new DateField("{$name}[date]", false);
+		$this->dateField = DateField::create("{$name}[date]", false)->setAttribute('placeholder', 'dd/mm/yyyy');
 		$this->dateField->setHTML5(false);
 		$this->dateField->setDateFormat('dd/MM/Y');
 		$this->dateField->addExtraClass('js-datepicker');
-		$this->timeField = new DropdownTimeField("{$name}[time]", false);
+		$this->timeField = DropdownTimeField::create("{$name}[time]", false);
 	}
 
 	public function getDateField() {
@@ -42,7 +42,10 @@ class DropdownDatetimeField extends DatetimeField {
             return null;
 		}
 
-		$dateTime = DateTime::createFromFormat('d/m/Y', $value['date']);
+        $dateTime = DateTime::createFromFormat('d/m/Y', $value['date']);
+        if ($dateTime === false) {
+            return null;
+        }
 
 		$time = $value['time'];
 		$hours = ($time['Period'] == 'AM') ? $time['Hours'] : $time['Hours'] + 12;
