@@ -1,0 +1,9 @@
+---
+Name: symbiote-datefields
+---
+SilverStripe\Admin\LeftAndMain:
+  extra_requirements_javascript:
+    - 'symbiote/symbiote-datefields:client/js/bootstrap-datepicker.js'
+    - 'symbiote/symbiote-datefields:client/js/datepicker.js'
+  extra_requirements_css:
+    - 'symbiote/symbiote-datefields:client/css/bootstrap-datepicker.css'
