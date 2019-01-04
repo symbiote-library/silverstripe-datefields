@@ -17,7 +17,7 @@ class DropdownTimeField extends FormField {
 	protected $period;
 	protected $extraClasses = array('dropdown');
 
-	public function __construct($name, $title = null, $value = '') {
+	public function __construct($name, $title = null, $value = '', $timeIncrements = ['00', '15', '30', '45']) {
 		$this->hours = DropdownField::create("{$name}[Hours]")
 			->setTitle('')
 			->setSource(ArrayLib::valuekey(range(1, 12)))
@@ -25,7 +25,7 @@ class DropdownTimeField extends FormField {
 
 		$this->mins = DropdownField::create("{$name}[Mins]")
 			->setTitle('')
-			->setSource(ArrayLib::valuekey(array('00', '15', '30', '45')));
+			->setSource(ArrayLib::valuekey($timeIncrements));
 
 		$this->period = DropdownField::create("{$name}[Period]")
 			->setTitle('')
