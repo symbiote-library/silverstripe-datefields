@@ -15,16 +15,11 @@ class DropdownDatetimeField extends DatetimeField {
 	protected $dateField;
 	protected $timeField;
 
-	public function __construct($name, $title = null, $value = '') {
+	public function __construct($name, $title = null, $value = '', $timeIncrements = ['00', '15', '30', '45']) {
 		parent::__construct($name, $title, $value);
 
-		$this->setHTML5(false);
-
-		$this->dateField = DateField::create("{$name}[date]", false)->setAttribute('placeholder', 'dd/mm/yyyy');
-		$this->dateField->setHTML5(false);
-		$this->dateField->setDateFormat('dd/MM/Y');
-		$this->dateField->addExtraClass('js-datepicker');
-		$this->timeField = DropdownTimeField::create("{$name}[time]", false);
+		$this->dateField = DateField::create("{$name}[date]", false);
+		$this->timeField = DropdownTimeField::create("{$name}[time]", false, '', $timeIncrements);
 	}
 
 	public function getDateField() {
@@ -42,8 +37,9 @@ class DropdownDatetimeField extends DatetimeField {
             return null;
 		}
 
-        $dateTime = DateTime::createFromFormat('d/m/Y', $value['date']);
+        $dateTime = DateTime::createFromFormat('Y-m-d', $value['date']);
         if ($dateTime === false) {
+            $this->rawValue = null;
             return null;
         }
 
@@ -53,10 +49,5 @@ class DropdownDatetimeField extends DatetimeField {
 		$dateTime->setTime((int)$hours, (int)$time['Mins']);
 
 		return $dateTime->format(DATE_ATOM);
-	}
-
-	public function internalToFrontend($value) {
-		$dateTime = new DateTime($value);
-		return $dateTime->format('d/m/Y');
 	}
 }
