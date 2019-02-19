@@ -1,9 +1,11 @@
----
-Name: symbiote-datefields
----
-SilverStripe\Admin\LeftAndMain:
-  extra_requirements_javascript:
-    - 'symbiote/symbiote-datefields:client/javascript/bootstrap-datepicker.js'
-    - 'symbiote/symbiote-datefields:client/javascript/datepicker.js'
-  extra_requirements_css:
-    - 'symbiote/symbiote-datefields:client/css/bootstrap-datepicker.css'
+# Not required, but if you decide to use the bootstrap picker,
+# you'll likely need the following enabled in your project config
+# ---
+# Name: symbiote-datefields
+# ---
+# SilverStripe\Admin\LeftAndMain:
+#   extra_requirements_javascript:
+#     - 'symbiote-library/symbiote-datefields:client/javascript/bootstrap-datepicker.js'
+#     - 'symbiote-library/symbiote-datefields:client/javascript/datepicker.js'
+#   extra_requirements_css:
+#     - 'symbiote-library/symbiote-datefields:client/css/bootstrap-datepicker.css'
