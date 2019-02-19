@@ -5,7 +5,7 @@ Adds better date fields for CMS users. Replaces Date Time Field and optionally T
 ## Composer Install
 
 ```
-composer require symbiote/symbiote-datefields:~0.5
+composer require symbiote-library/symbiote-datefields:~0.5
 ```
 
 ## Requirements
