@@ -1,5 +1,5 @@
 {
-    "name": "symbiote/symbiote-datefields",
+    "name": "symbiote-library/symbiote-datefields",
     "description": "Adds better date fields for CMS users",
     "type": "silverstripe-vendormodule",
     "keywords": [
