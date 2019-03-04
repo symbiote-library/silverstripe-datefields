@@ -43,8 +43,15 @@ class DropdownDatetimeField extends DatetimeField {
             return null;
         }
 
-		$time = $value['time'];
-		$hours = ($time['Period'] == 'AM') ? $time['Hours'] : $time['Hours'] + 12;
+        $time = $value['time'];
+        $hours = '';
+
+        if ($time['Hours'] == 12) {
+            $hours = $time['Period'] == 'AM' ? '00' : '12';
+        } else {
+            $hours = ($time['Period'] == 'AM') ? $time['Hours'] : $time['Hours'] + 12;
+        }
+
 
 		$dateTime->setTime((int)$hours, (int)$time['Mins']);
 
